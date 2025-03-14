@@ -11,9 +11,9 @@ app.use(express.json())
 app.use('/api', apiRoutes);
 
 // Home route
-app.get('/', (req, res) => {
-    res.send('Welcome to the Node.js API');
-  });
+// app.get('/', (req, res) => {
+//     res.send('Welcome to the Node.js API');
+// });
   
 // 404 handler
 app.use((req, res) => {
