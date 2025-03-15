@@ -1,7 +1,7 @@
 // A wrapper class that enables GPT calls
 
-import 'dotenv/config'; // Only need it during testing
-import OpenAI from "openai";
+require('dotenv').config(); // Only need it during testing
+const OpenAI = require("openai")
 
 class GPT {
     constructor(){
