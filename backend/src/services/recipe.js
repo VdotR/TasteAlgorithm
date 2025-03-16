@@ -20,6 +20,7 @@ const generateRecipe = async (input) => {
         const prompt = `
         Generate a recipe (safe, sanitary, delicious) of or using ${input} in JSON format. The response must be valid JSON with the following fields:
         - title: (string) The name of the dish.
+        - description: (string) description of the dish
         - prepTime: (string) Time it takes to prep the meal
         - cookTime: (string) Time it takes to cook the meal
         - servings: (integer) Number of servings.
@@ -27,9 +28,10 @@ const generateRecipe = async (input) => {
         - ingredients: (array of strings) List of ingredients.
         - instructions: (array of strings) Step-by-step instructions.
         - nutritionFacts: (dictionary string: integer) amount of calories, protein, carbs and fat per serving. You should calculate this as accurately as possible
-        - notes: additional tips and instructions
+        - notes: additional tips and instructions (in a refreshing and friendly tone)
         
         title: 'Delicious Recipe',
+        description: "A spectacular fusion dish featuring succulent salmon fillets glazed with a spicy-sweet mango sauce, served atop a vibrant medley of colorful roasted vegetables",
         prepTime: '20 min',
         cookTime: '30 min',
         servings: 4,
@@ -62,7 +64,7 @@ const generateRecipe = async (input) => {
         // Set up GPT
         const gpt = new GPT();
         const options = {
-            temperature: 0.7
+            temperature: 0.5
         };
 
         // Get GPT Response
