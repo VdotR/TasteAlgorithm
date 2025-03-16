@@ -22,49 +22,63 @@ const Header = () => (
   </header>
 );
 
+
 // Recipe Input Component
-const RecipeInput = ({ prompt, setPrompt, handleGenerateRecipe, isGenerating, loadingDots }) => (
-  <div className="recipe-input">
-    <h2 className="input-title">
-      <Sparkles size={24} className="icon-yellow" />
-      What culinary creation shall we conjure today?
-    </h2>
-    
-    <div className="input-container">
-      <div className="search-input-group">
-        <div className="input-glow"></div>
-        <div className="input-inner">
-          <Search className="search-icon" size={22} />
-          <input
-            type="text"
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            placeholder="e.g. A colorful summer dish with mango and salmon..."
-            className="recipe-prompt-input"
-          />
-          <div className="input-border"></div>
-        </div>
-      </div>
+const RecipeInput = ({ prompt, setPrompt, handleGenerateRecipe, isGenerating, loadingDots }) => {
+  // Handle key down events in the input field
+  const handleKeyDown = (e) => {
+    // Check if the key pressed is Enter and there's a valid prompt
+    if (e.key === 'Enter' && prompt.trim() && !isGenerating) {
+      handleGenerateRecipe();
+    }
+  };
+
+  return (
+    <div className="recipe-input">
+      <h2 className="input-title">
+        <Sparkles size={24} className="icon-yellow" />
+        What culinary creation shall we conjure today?
+      </h2>
       
-      <button
-        onClick={handleGenerateRecipe}
-        disabled={isGenerating || !prompt.trim()}
-        className={`create-button ${(isGenerating || !prompt.trim()) ? 'disabled' : ''}`}
-      >
-        {isGenerating ? (
-          <>
-            <div className="loading-spinner"></div>
-            Creating{loadingDots}
-          </>
-        ) : (
-          <>
-            Create Magic <Zap size={20} className="icon-right" />
-          </>
-        )}
-      </button>
+      <div className="input-container">
+        <div className="search-input-group">
+          <div className="input-glow"></div>
+          <div className="input-inner">
+            <Search className="search-icon" size={22} />
+            <input
+              type="text"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="e.g. A colorful summer dish with mango and salmon..."
+              className="recipe-prompt-input"
+            />
+            <div className="input-border"></div>
+          </div>
+        </div>
+        
+        <button
+          onClick={handleGenerateRecipe}
+          disabled={isGenerating || !prompt.trim()}
+          className={`create-button ${(isGenerating || !prompt.trim()) ? 'disabled' : ''}`}
+        >
+          {isGenerating ? (
+            <>
+              <div className="loading-spinner"></div>
+              Creating{loadingDots}
+            </>
+          ) : (
+            <>
+              Create Magic <Zap size={20} className="icon-right" />
+            </>
+          )}
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+}
+  
+  
 
 // Loading State Component
 const LoadingState = () => (
@@ -97,16 +111,6 @@ const RecipeHeader = ({ recipe }) => (
     <div className="header-content">
       <h2 className="recipe-title">{recipe.title}</h2>
       
-      <div className="recipe-actions">
-        <button className="recipe-action-button">
-          <Heart size={18} className="icon-pink" />
-          Save
-        </button>
-        <button className="recipe-action-button">
-          <BookOpen size={18} className="icon-blue" />
-          Print
-        </button>
-      </div>
     </div>
     
     <div className="recipe-description">{recipe.description}</div>
