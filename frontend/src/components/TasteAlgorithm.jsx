@@ -1,6 +1,6 @@
 // TasteAlgorithm.js
 import React, { useState, useEffect } from 'react';
-import { ChefHat, Sparkles, Search, ArrowRight, Clock, Users, Heart, BookOpen, Zap, ArrowDown, Flame } from 'lucide-react';
+import { ChefHat, Sparkles, Search, ArrowRight, Clock, Users, Heart, BookOpen, Zap, ArrowDown, Flame} from 'lucide-react';
 import './TasteAlgorithm.css';
 
 // Header Component
@@ -338,6 +338,26 @@ const TasteAlgorithm = () => {
     return () => clearInterval(interval);
   }, [isGenerating]);
 
+  // Footer Component
+const Footer = () => (
+  <footer className="app-footer">
+    <div className="container">
+      <div className="footer-content">
+        <div className="footer-copyright">
+          © {new Date().getFullYear()} TasteAlgorithm. All Rights Reserved.
+        </div>
+        <div className="footer-links">
+          <a href="/terms" className="footer-link">Terms of Service</a>
+          <a href="/contact" className="footer-link">Contact</a>
+        </div>
+        <div className="footer-credit">
+          Made with <Heart size={14} className="icon-pink" /> by Victor Ren
+        </div>
+      </div>
+    </div>
+  </footer>
+);
+
   return (
     <div className="app-container">
       {/* Decorative elements */}
@@ -380,6 +400,8 @@ const TasteAlgorithm = () => {
         {/* Generated recipe */}
         {generatedRecipe && !isGenerating && !error && <GeneratedRecipe recipe={generatedRecipe} />}
       </main>
+
+      <Footer />
     </div>
   );
 };
