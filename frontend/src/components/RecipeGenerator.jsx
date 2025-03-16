@@ -26,8 +26,7 @@ const RecipeGenerator = () => {
       // Enhance the prompt to specify we want a recipe
       
       // Make GET request to API
-      // Note: Replace 'https://your-api-endpoint.com/api/prompt' with your actual API endpoint
-      const isDev = import.meta.NODE_ENV === 'development';
+      const isDev = import.meta.env.DEV;
       const apiBaseUrl = isDev ? 'http://localhost:3000' : ''; // Empty string for relative in prod
 
       const response = await fetch(`${apiBaseUrl}/api/recipe`, {

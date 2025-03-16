@@ -26,6 +26,7 @@ const generateRecipe = async (input) => {
         - difficulty: (string) easy, medium, or hard
         - ingredients: (array of strings) List of ingredients.
         - instructions: (array of strings) Step-by-step instructions.
+        - nutritionFacts: (dictionary string: integer) amount of calories, protein, carbs and fat per serving. You should calculate this as accurately as possible
         - notes: additional tips and instructions
         
         title: 'Delicious Recipe',
@@ -46,6 +47,12 @@ const generateRecipe = async (input) => {
           'Third step explaining the cooking process.',
           'Final step with serving suggestions.'
         ],
+        nutritionFacts: {
+            calories: 385,
+            protein: 29,
+            carbs: 24,
+            fat: 18
+        }
         notes: 'This recipe can be stored in an airtight container for up to 3 days.'
 
         Respond **only** with valid JSON (no markdown formatting, just plain JSON string) that can be interpreted by Javascript JSON.parse() function and no additional text. 
