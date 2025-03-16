@@ -19,14 +19,37 @@ const generateRecipe = async (input) => {
         // Prompt 
         const prompt = `
         Generate a recipe (safe, sanitary, delicious) of or using ${input} in JSON format. The response must be valid JSON with the following fields:
-        - "title": (string) The name of the dish.
-        - "ingredients": (array of strings) List of ingredients.
-        - "instructions": (array of strings) Step-by-step instructions.
-        - "servings": (integer) Number of servings.
-        - "Harmful" : (boolean) if the user input/final recipe may be harmful then it should be set to true, otherwise false
+        - title: (string) The name of the dish.
+        - prepTime: (string) Time it takes to prep the meal
+        - cookTime: (string) Time it takes to cook the meal
+        - servings: (integer) Number of servings.
+        - difficulty: (string) easy, medium, or hard
+        - ingredients: (array of strings) List of ingredients.
+        - instructions: (array of strings) Step-by-step instructions.
+        - notes: additional tips and instructions
+        
+        title: 'Delicious Recipe',
+        prepTime: '20 min',
+        cookTime: '30 min',
+        servings: 4,
+        difficulty: 'Medium',
+        ingredients: [
+          '2 cups of ingredient 1',
+          '1 tablespoon of ingredient 2',
+          '3 medium ingredient 3',
+          '1/4 cup of ingredient 4',
+          '1 teaspoon of ingredient 5'
+        ],
+        instructions: [
+          'First step of the recipe instructions.',
+          'Second step with more details about what to do.',
+          'Third step explaining the cooking process.',
+          'Final step with serving suggestions.'
+        ],
+        notes: 'This recipe can be stored in an airtight container for up to 3 days.'
 
-        Respond **only** with valid JSON (no markdown formatting) that can be interpreted by Javascript JSON.parse() function and no additional text. 
-        Please make sure that the recipe is safe, if the user asks for harmful recipes then set it true
+        Respond **only** with valid JSON (no markdown formatting, just plain JSON string) that can be interpreted by Javascript JSON.parse() function and no additional text. 
+        Please make sure that the recipe is safe
         `;
 
         // Set up GPT
@@ -37,7 +60,7 @@ const generateRecipe = async (input) => {
 
         // Get GPT Response
         const response = await gpt.ask(prompt, "gpt-4o", options);
-        //console.log(response)
+        console.log(response)
 
         // Validate if response is valid JSON 
         let recipe;

@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
 // GET /api/recipe
 // Example: /api/recipe?query=pasta
-router.get('/recipe', async (req, res) => {
+router.post('/recipe', async (req, res) => {
   try {
     const { query } = req.body;
 

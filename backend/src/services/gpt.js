@@ -18,6 +18,7 @@ class GPT {
                   content: prompt,
                 },
               ],
+              response_format: { type: "json_object" },
               ...options, // Allow passing additional options
             });
             
