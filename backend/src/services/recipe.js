@@ -26,7 +26,7 @@ const generateRecipe = async (input) => {
         - servings: (integer) Number of servings.
         - difficulty: (string) easy, medium, or hard
         - ingredients: (array of strings) List of ingredients.
-        - instructions: (array of strings) Step-by-step instructions.
+        - steps: (array of strings) Step-by-step instructions.
         - nutritionFacts: (dictionary string: integer) amount of calories, protein, carbs and fat per serving. You should calculate this as accurately as possible
         - notes: additional tips and instructions (in a refreshing and friendly tone)
         

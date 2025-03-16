@@ -1,9 +1,9 @@
-import RecipeGenerator from './components/RecipeGenerator'
+import TasteAlgorithm from './components/TasteAlgorithm'
 
 function App() {
   return (
     <div className="App">
-      <RecipeGenerator />
+      <TasteAlgorithm />
     </div>
   )
 }
