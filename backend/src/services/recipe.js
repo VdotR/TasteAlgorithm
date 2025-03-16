@@ -43,7 +43,7 @@ const generateRecipe = async (input) => {
           '1/4 cup of ingredient 4',
           '1 teaspoon of ingredient 5'
         ],
-        instructions: [
+        steps: [
           'First step of the recipe instructions.',
           'Second step with more details about what to do.',
           'Third step explaining the cooking process.',
