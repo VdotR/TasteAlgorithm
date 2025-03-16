@@ -67,7 +67,7 @@ const RecipeGenerator = () => {
   return (
     <div className="container">
       <header>
-        <h1>Recipe Generator</h1>
+        <h1>TasteAlgorithm</h1>
         <p className="tagline">Create delicious recipes from simple prompts</p>
       </header>
       
